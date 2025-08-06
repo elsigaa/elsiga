@@ -84,28 +84,11 @@ export const ProjectsSection = () => {
                     >
                       <ExternalLink size={20} />
                     </a>
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                    >
-                      <Github size={20} />
-                    </a>
                   </div>
                 </div>
               </div>
             </a>
           ))}
-        </div>
-
-        <div className="text-center mt-12">
-          <a
-            className="cosmix-button w-fit flex items-center mx-auto gap-2"
-            target="_blank"
-            href="https://github.com/elsigaa"
-          >
-            Check My Github <ArrowRight size={16} />
-          </a>
         </div>
       </div>
     </section>
