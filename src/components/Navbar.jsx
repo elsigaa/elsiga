@@ -60,7 +60,9 @@ export const Navbar = () => {
             className="text-xl font-bold text-primary flex items-center"
           >
             <span className="relative z-10">
-              <span className="text-glow text-foreground">Eli Siga</span>{" "}
+              <span className="text-glow text-foreground">
+                Eli Sigalingging
+              </span>{" "}
               Portfolio
             </span>
           </a>
