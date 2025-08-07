@@ -1,4 +1,4 @@
-import { Linkedin, Mail, MapPin, Phone, Send } from "lucide-react";
+import { Instagram, Linkedin, Mail, MapPin, Phone, Send } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
@@ -47,7 +47,7 @@ export const ContactSection = () => {
                     href="mailto:xynjho@gmail.com"
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
-                    xynjho@gmail.com
+                    elsigaa@gmail.com
                   </a>
                 </div>
               </div>
@@ -83,6 +83,9 @@ export const ContactSection = () => {
               <div className="flex space-x-4 justify-center">
                 <a href="#" target="">
                   <Linkedin />
+                </a>
+                <a href="#" target="">
+                  <Instagram />
                 </a>
                 <a href="#" target="">
                   🟢
