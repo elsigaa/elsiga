@@ -1,15 +1,12 @@
-import { Instagram, Linkedin, Mail, MapPin, Phone, Send } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { useToast } from "@/hooks/use-toast";
+import { Linkedin, Mail, MapPin, Phone, Send } from "lucide-react";
 import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 export const ContactSection = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-
     setIsSubmitting(true);
 
     setTimeout(() => {
@@ -17,14 +14,17 @@ export const ContactSection = () => {
         title: "Message sent!",
         description: "Thank you for your message.",
       });
+
       setIsSubmitting(false);
+      window.location.reload(); // refresh page
     }, 1500);
   };
+
   return (
     <section id="contact" className="py-24 px-4 relative bg-secondary/30">
       <div className="container mx-auto max-w-5xl">
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-          Get in <span className="text-primary"> Touch</span>
+          Get in <span className="text-primary">Touch</span>
         </h2>
 
         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
@@ -33,18 +33,19 @@ export const ContactSection = () => {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {/* Contact Info */}
           <div className="space-y-8">
-            <h3 className="text-2 font-semibold mb-6">Contact Me</h3>
+            <h3 className="text-2xl font-semibold mb-6">Contact Me</h3>
 
-            <div className="space-y-6 justify-center">
+            <div className="space-y-6">
               <div className="flex items-start space-x-4">
                 <div className="p-3 rounded-full bg-primary/10">
-                  <Mail className="h-6 w-6 text-primary" />{" "}
+                  <Mail className="h-6 w-6 text-primary" />
                 </div>
                 <div>
                   <h4 className="font-medium">Email</h4>
                   <a
-                    href="mailto:xynjho@gmail.com"
+                    href="mailto:elsigaa@gmail.com"
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     elsigaa@gmail.com
@@ -53,51 +54,64 @@ export const ContactSection = () => {
               </div>
               <div className="flex items-start space-x-4">
                 <div className="p-3 rounded-full bg-primary/10">
-                  <Phone className="h-6 w-6 text-primary" />{" "}
+                  <Phone className="h-6 w-6 text-primary" />
                 </div>
                 <div>
                   <h4 className="font-medium">Phone</h4>
                   <a
-                    href="tel:+62 812 6555 7216"
+                    href="tel:+6281265557216"
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
-                    +62
+                    +62 812 6555 7216
                   </a>
                 </div>
               </div>
               <div className="flex items-start space-x-4">
                 <div className="p-3 rounded-full bg-primary/10">
-                  <MapPin className="h-6 w-6 text-primary" />{" "}
+                  <MapPin className="h-6 w-6 text-primary" />
                 </div>
                 <div>
                   <h4 className="font-medium">Location</h4>
-                  <a className="text-muted-foreground hover:text-primary transition-colors">
-                    Sumatera Utara, Medan
-                  </a>
+                  <p className="text-muted-foreground">Sumatera Utara, Medan</p>
                 </div>
               </div>
             </div>
 
-            <div className="pt-8">
+            <div>
               <h4 className="font-medium mb-4">Connect With Me</h4>
-              <div className="flex space-x-4 justify-center">
+              <div className="flex justify-center">
                 <a
                   href="https://www.linkedin.com/in/eli-sigalingging-86b1aa379"
                   target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-full bg-primary/10 hover:text-primary transition-colors"
                 >
-                  <Linkedin />
+                  <Linkedin className="h-6 w-6" />
                 </a>
               </div>
             </div>
           </div>
 
-          <div
-            className="bg-card p-8 rounded-lg shadow-xs"
-            onSubmit={handleSubmit}
-          >
+          {/* Contact Form */}
+          <div className="bg-card p-8 rounded-lg shadow-xs">
             <h3 className="text-2xl font-semibold mb-6">Send a Message</h3>
 
-            <form className="space-y-6">
+            <form
+              action="https://formsubmit.co/elsigaa@gmail.com"
+              method="POST"
+              className="space-y-6"
+              onSubmit={handleSubmit}
+            >
+              {/* FormSubmit Hidden Inputs */}
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="box" />
+              <input
+                type="hidden"
+                name="_subject"
+                value="New Message from Website"
+              />
+              <input type="hidden" name="_next" value="" />
+
               <div>
                 <label
                   htmlFor="name"
@@ -110,8 +124,8 @@ export const ContactSection = () => {
                   id="name"
                   name="name"
                   required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-backround focus:outline-hidden focus:ring-2 focus:ring-primary"
-                  placeholder="Your Name...."
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:ring-2 focus:ring-primary"
+                  placeholder="Your Name..."
                 />
               </div>
 
@@ -127,8 +141,8 @@ export const ContactSection = () => {
                   id="email"
                   name="email"
                   required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-backround focus:outline-hidden focus:ring-2 focus:ring-primary"
-                  placeholder="youremail@gmail.com"
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:ring-2 focus:ring-primary"
+                  placeholder="youremail@example.com"
                 />
               </div>
 
@@ -143,19 +157,17 @@ export const ContactSection = () => {
                   id="message"
                   name="message"
                   required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-backround focus:outline-hidden focus:ring-2 focus:ring-primary resize-none"
-                  placeholder="hallo, type your message here"
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:ring-2 focus:ring-primary resize-none"
+                  placeholder="Hello, type your message here..."
                 />
               </div>
 
               <button
                 type="submit"
+                className="cosmic-button w-full flex items-center justify-center gap-2"
                 disabled={isSubmitting}
-                className={cn(
-                  "cosmic-button w-full flex items-center justify-center gap-2"
-                )}
               >
-                {isSubmitting ? "Sending..." : "Send Message"}
+                {isSubmitting ? "Sending..." : "Send Message"}{" "}
                 <Send size={16} />
               </button>
             </form>
