@@ -4,16 +4,10 @@ import { cn } from "@/lib/utils";
 const skills = [
   // Frontend
   {
-    name: "HTML",
+    name: "HTML/CSS",
     level: 95,
     category: "frontend",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
-  },
-  {
-    name: "CSS",
-    level: 95,
-    category: "frontend",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg",
   },
   {
     name: "JavaScript",
@@ -128,6 +122,19 @@ export const SkillsSection = () => {
                 <h3 className="font-medium text-sm sm:text-base">
                   {skill.name}
                 </h3>
+              </div>
+
+              <div className="w-full bg-secondary/50 h-2 rounded-full overflow-hidden">
+                <div
+                  className="bg-primary h-2 rounded-full origin-left animate-[grow_1.5s_ease-out]"
+                  style={{ width: skill.level + "%" }}
+                />
+              </div>
+
+              <div className="text-right mt-1">
+                <span className="text-xs text-muted-foreground">
+                  {skill.level}%
+                </span>
               </div>
             </div>
           ))}
