@@ -9,6 +9,7 @@ const projects = [
     image: "/projects/project1.png",
     tags: ["Codeigniter4", "Boostrap5", "AdminLTE", "MySQL"],
     demoURL: "http://sistemeskul.unaux.com/",
+    githubUrl: "https://github.com/elsigaa/sistemekstrakurikulersekolah.git",
   },
   {
     id: 2,
@@ -18,6 +19,7 @@ const projects = [
     image: "/projects/project2.png",
     tags: ["Codeigniter4", "Boostrap5", "AdminLTE", "MySQL"],
     demoURL: "http://bookingroom.unaux.com/",
+    githubUrl: "https://github.com/elsigaa/sistembookingroom.git",
   },
   {
     id: 3,
@@ -27,6 +29,7 @@ const projects = [
     image: "/projects/project3.png",
     tags: ["Codeigniter4", "Boostrap5", "AdminLTE", "Tailwind", "MySQL"],
     demoURL: "http://suratketerangan.unaux.com/",
+    githubUrl: "https://github.com/elsigaa/suratketerangan.git",
   },
 ];
 
@@ -83,6 +86,13 @@ export const ProjectsSection = () => {
                       className="text-foreground/80 hover:text-primary transition-colors duration-300"
                     >
                       <ExternalLink size={20} />
+                    </a>
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                    >
+                      <Github size={20} />
                     </a>
                   </div>
                 </div>
