@@ -1,4 +1,14 @@
 import { Briefcase, Code, User2 } from "lucide-react";
+import { motion } from "framer-motion";
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 0 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 2, delay: i * 1, ease: "easeOut" },
+  }),
+};
 
 export const AboutSection = () => {
   return (
@@ -10,7 +20,13 @@ export const AboutSection = () => {
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
+          <motion.div
+            className="space-y-6"
+            initial={{ opacity: 0, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 3, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
             <h3 className="text-2xl font-=semibold">
               Web Developer & Project Management
             </h3>
@@ -44,51 +60,46 @@ export const AboutSection = () => {
                 Download CV
               </a>
             </div>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 gap-6">
-            <div className="gradient-border p-6 card-hover">
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Code className="h-6 w-6 text-primary" />
+            {[
+              {
+                icon: <Code className="h-6 w-6 text-primary" />,
+                title: "Web Development",
+                desc: "Create responsive websites and web applications with modern frameworks.",
+              },
+              {
+                icon: <User2 className="h-6 w-6 text-primary" />,
+                title: "UI/UX Design",
+                desc: "Designing intuitive user interfaces and seamless user experiences.",
+              },
+              {
+                icon: <Briefcase className="h-6 w-6 text-primary" />,
+                title: "Project Management",
+                desc: "Leading project from conception to completion with agile methodologies.",
+              },
+            ].map((card, i) => (
+              <motion.div
+                key={i}
+                className="gradient-border p-6 card-hover"
+                variants={cardVariants}
+                initial="hidden"
+                whileInView="visible"
+                custom={i}
+                viewport={{ once: true }}
+              >
+                <div className="flex items-start gap-4">
+                  <div className="p-3 rounded-full bg-primary/10">
+                    {card.icon}
+                  </div>
+                  <div className="text-left">
+                    <h4 className="font-semibold text-lg">{card.title}</h4>
+                    <p className="text-muted-foreground">{card.desc}</p>
+                  </div>
                 </div>
-                <div className="text-left">
-                  <h4 className="font-semibold text-lg"> Web Development</h4>
-                  <p className="text-muted-foreground">
-                    Create responsive websites and web applications with modern
-                    frameworks.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="gradient-border p-6 card-hover">
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <User2 className="h-6 w-6 text-primary" />
-                </div>
-                <div className="text-left">
-                  <h4 className="font-semibold text-lg"> UI/UX Design</h4>
-                  <p className="text-muted-foreground">
-                    Designing intuitive user interfaces and seamless user
-                    experiences.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="gradient-border p-6 card-hover">
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Briefcase className="h-6 w-6 text-primary" />
-                </div>
-                <div className="text-left">
-                  <h4 className="font-semibold text-lg">Project Management</h4>
-                  <p className="text-muted-foreground">
-                    Leading project from conception to completion with agile
-                    methodologies.
-                  </p>
-                </div>
-              </div>
-            </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>

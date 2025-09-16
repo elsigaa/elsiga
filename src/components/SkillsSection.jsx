@@ -44,7 +44,7 @@ const skills = [
   {
     name: "Laravel",
     level: 90,
-    category: "backend",
+    category: ["backend", "frontend"],
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg",
   },
 
