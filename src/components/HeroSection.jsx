@@ -17,6 +17,7 @@ export const HeroSection = () => {
             <span className="text-gradient ml-2 opacity-0 animate-fade-in-delay-2">
               {" "}
               Sigalingging
+              <span className="animate-blink">_</span>
             </span>
           </h1>
 
